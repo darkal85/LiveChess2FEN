@@ -10,7 +10,7 @@ import time
 import cv2
 import numpy as np
 import onnxruntime
-from keras.engine.saving import load_model
+from keras.models import load_model
 from keras.preprocessing import image
 
 try:

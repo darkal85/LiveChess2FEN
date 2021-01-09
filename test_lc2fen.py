@@ -7,9 +7,9 @@ import numpy as np
 import onnxruntime
 from keras.applications.imagenet_utils import preprocess_input as \
     prein_squeezenet
-from keras.applications.mobilenet_v2 import preprocess_input as prein_mobilenet
+#from keras.applications.mobilenet_v2 import preprocess_input as prein_mobilenet
 from keras.applications.xception import preprocess_input as prein_xception
-from keras.engine.saving import load_model
+from keras.models import load_model
 
 try:
     import pycuda.driver as cuda
@@ -28,20 +28,20 @@ from lc2fen.test_predict_board import predict_board, print_fen_comparison
 # PRE_INPUT example:
 #   from keras.applications.mobilenet_v2 import preprocess_input as
 #       prein_mobilenet
-ACTIVATE_KERAS = False
-MODEL_PATH_KERAS = "selected_models/Xception_last.h5"
+ACTIVATE_KERAS = True
+MODEL_PATH_KERAS = "./selected_models/Xception_last.h5"
 IMG_SIZE_KERAS = 299
 PRE_INPUT_KERAS = prein_xception
 
 ACTIVATE_ONNX = False
-MODEL_PATH_ONNX = "selected_models/MobileNetV2_0p5_all.onnx"
+MODEL_PATH_ONNX = "./selected_models/MobileNetV2_0p5_all.onnx"
 IMG_SIZE_ONNX = 224
-PRE_INPUT_ONNX = prein_mobilenet
+PRE_INPUT_ONNX = None #prein_mobilenet
 
 ACTIVATE_TRT = False
-MODEL_PATH_TRT = "selected_models/SqueezeNet1p1.trt"
+MODEL_PATH_TRT = "./selected_models/SqueezeNet1p1.trt"
 IMG_SIZE_TRT = 227
-PRE_INPUT_TRT = prein_squeezenet
+PRE_INPUT_TRT = None #prein_squeezenet
 
 
 class __HostDeviceTuple:
